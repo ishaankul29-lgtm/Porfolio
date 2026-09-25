@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,6 +120,15 @@
     max-width:16ch;
   }
   .hero h1 em{ font-style:normal; color:var(--muted-2); }
+  .hero-role{
+    margin-top:22px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:clamp(1.4rem, 3.4vw, 2.4rem);
+    color:var(--lime);
+    letter-spacing:-0.01em;
+  }
+  .hero-role span{ color:var(--muted); font-weight:500; }
   .hero-sub{
     margin-top:28px;
     max-width:520px;
@@ -191,17 +199,25 @@
 
   .clip{
     background:var(--panel-1);
+    background-size:cover; background-position:center;
     aspect-ratio:4/3;
     position:relative;
     display:flex; flex-direction:column; justify-content:space-between;
     padding:18px;
     text-decoration:none;
     overflow:hidden;
-    transition:background 0.2s ease;
+    transition:transform 0.2s ease;
   }
-  .clip:hover{ background:var(--panel-2); }
+  .clip::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(13,13,15,0.05) 0%, rgba(13,13,15,0.15) 45%, rgba(13,13,15,0.82) 100%);
+    pointer-events:none;
+  }
+  .clip:hover{ transform:translateY(-3px); }
   .clip:hover .play{ transform:scale(1.08); background:var(--lime); border-color:var(--lime); }
   .clip:hover .play svg path{ fill:#0d0d0f; }
+  .clip-tag, .clip-mid, .clip-title{ position:relative; z-index:1; }
+  .play{ backdrop-filter:blur(2px); }
   .clip-tag{
     font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted-2);
     display:flex; justify-content:space-between;
@@ -315,8 +331,9 @@
   <div class="hero-bg"></div>
   <div class="ruler"></div>
   <div class="wrap hero-inner">
-    <div class="hero-kicker"><span class="bar"></span> ISHAAN KULSHRESTHA — VIDEO EDITOR &amp; GRAPHIC DESIGNER</div>
-    <h1>Cuts that hold&nbsp;attention.<br><em>Frames that sell.</em></h1>
+    <div class="hero-kicker"><span class="bar"></span> PORTFOLIO — BASED IN INDIA</div>
+    <h1 style="font-size:clamp(2.8rem, 9.5vw, 7.8rem);">ISHAAN<br>KULSHRESTHA</h1>
+    <div class="hero-role">Video Editor <span>&amp; Graphic Designer</span></div>
     <p class="hero-sub">I edit ads, interviews and short-form video, and design the flyers, banners and campaign art that go with them — for schools, clinics, logistics companies and small brands who need work that actually gets used.</p>
     <div class="hero-row">
       <a href="#reel" class="btn">Watch the reel</a>
@@ -350,7 +367,7 @@
   </div>
   <div class="filmgrid">
     
-    <a class="clip" href="https://drive.google.com/file/d/188QSeQxBB-8JqeR0xGTgTGSpKu7hsQk9/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWMxNDE2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJjMTQxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiNmZjNiMzAiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjZmYzYjMwIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cmVjdCB4PSItNTgiIHk9Ii00MCIgd2lkdGg9IjExNiIgaGVpZ2h0PSI4MCIgcng9IjgiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMjYiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMTAiIGZpbGw9IiNmMmVmZTgiIHN0cm9rZT0ibm9uZSIvPgogICAgICAgIDxyZWN0IHg9IjM0IiB5PSItMzQiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMiIgcng9IjIiLz4KICAgICAgPC9nPjwvZz4KPC9zdmc+')" href="https://drive.google.com/file/d/188QSeQxBB-8JqeR0xGTgTGSpKu7hsQk9/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">01</span><span class="cat">Ad</span></div>
       <div class="clip-mid">
@@ -360,7 +377,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1Z3dKfXcnS5LyMq0BKlHpGGOH0TfrTPtc/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWMxNDE2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJjMTQxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiNmZjNiMzAiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjZmYzYjMwIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cmVjdCB4PSItNTgiIHk9Ii00MCIgd2lkdGg9IjExNiIgaGVpZ2h0PSI4MCIgcng9IjgiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMjYiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMTAiIGZpbGw9IiNmMmVmZTgiIHN0cm9rZT0ibm9uZSIvPgogICAgICAgIDxyZWN0IHg9IjM0IiB5PSItMzQiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMiIgcng9IjIiLz4KICAgICAgPC9nPjwvZz4KPC9zdmc+')" href="https://drive.google.com/file/d/1Z3dKfXcnS5LyMq0BKlHpGGOH0TfrTPtc/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">02</span><span class="cat">Ad</span></div>
       <div class="clip-mid">
@@ -370,7 +387,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1ddzHlFZVmPYt5NhqhutpqAeFi1tTyiZI/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTMxNjExIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFjMjQxMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiNkNmZmM2YiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjZDZmZjNmIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cGF0aCBkPSJNIDYgLTUwIEwgLTQ2IDEwIEwgLTYgMTAgTCAtMTQgNTAgTCA0NiAtMTQgTCA2IC0xNCBaIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgICAgIDwvZz48L2c+Cjwvc3ZnPg==')" href="https://drive.google.com/file/d/1ddzHlFZVmPYt5NhqhutpqAeFi1tTyiZI/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">03</span><span class="cat">Short Edit</span></div>
       <div class="clip-mid">
@@ -380,7 +397,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1EktfKKO2fAqRvZkypeF5S4HcpM38B5dW/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWMxNDE2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzMwMTgxMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiNmZjNiMzAiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjZmYzYjMwIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cmVjdCB4PSItNTQiIHk9Ii0yMCIgd2lkdGg9IjEwOCIgaGVpZ2h0PSI2MiIgcng9IjYiLz4KICAgICAgICA8cGF0aCBkPSJNIC01NCAtMjAgTCAtMzggLTQyIEwgLTE4IC00MiBMIC0zNCAtMjAgWiIvPgogICAgICAgIDxwYXRoIGQ9Ik0gLTEyIC0yMCBMIDQgLTQyIEwgMjQgLTQyIEwgOCAtMjAgWiIvPgogICAgICAgIDxwYXRoIGQ9Ik0gMzAgLTIwIEwgNDYgLTQyIEwgNTQgLTQyIEwgNTQgLTIwIFoiLz4KICAgICAgPC9nPjwvZz4KPC9zdmc+')" href="https://drive.google.com/file/d/1EktfKKO2fAqRvZkypeF5S4HcpM38B5dW/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">04</span><span class="cat">Trailer</span></div>
       <div class="clip-mid">
@@ -390,7 +407,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1JuI66FPF2cgvKOZi7_atHgJ24oL4Yskl/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTQxNTE4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFlMjAyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiM4YzhjOTMiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjOGM4YzkzIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cmVjdCB4PSItMjIiIHk9Ii01MiIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjcwIiByeD0iMjIiLz4KICAgICAgICA8cGF0aCBkPSJNIC00MCA2IGE0MCA0MCAwIDAgMCA4MCAwIi8+CiAgICAgICAgPGxpbmUgeDE9IjAiIHkxPSI0NiIgeDI9IjAiIHkyPSI2NCIvPgogICAgICAgIDxsaW5lIHgxPSItMjAiIHkxPSI2NCIgeDI9IjIwIiB5Mj0iNjQiLz4KICAgICAgPC9nPjwvZz4KPC9zdmc+')" href="https://drive.google.com/file/d/1JuI66FPF2cgvKOZi7_atHgJ24oL4Yskl/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">05</span><span class="cat">Interview</span></div>
       <div class="clip-mid">
@@ -400,7 +417,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1qtIt6-3PhaGqCDf5PG4BnPB3kUxbIjIK/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWMxNDE2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJjMTQxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiNmZjNiMzAiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjZmYzYjMwIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cmVjdCB4PSItNTgiIHk9Ii00MCIgd2lkdGg9IjExNiIgaGVpZ2h0PSI4MCIgcng9IjgiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMjYiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMTAiIGZpbGw9IiNmMmVmZTgiIHN0cm9rZT0ibm9uZSIvPgogICAgICAgIDxyZWN0IHg9IjM0IiB5PSItMzQiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMiIgcng9IjIiLz4KICAgICAgPC9nPjwvZz4KPC9zdmc+')" href="https://drive.google.com/file/d/1qtIt6-3PhaGqCDf5PG4BnPB3kUxbIjIK/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">06</span><span class="cat">Ad</span></div>
       <div class="clip-mid">
@@ -410,7 +427,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1FygDp_CPk4zh4iqb32QRaauuuTZojQ8N/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTQxNTE4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFlMjAyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiM4YzhjOTMiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjOGM4YzkzIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cmVjdCB4PSItMjIiIHk9Ii01MiIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjcwIiByeD0iMjIiLz4KICAgICAgICA8cGF0aCBkPSJNIC00MCA2IGE0MCA0MCAwIDAgMCA4MCAwIi8+CiAgICAgICAgPGxpbmUgeDE9IjAiIHkxPSI0NiIgeDI9IjAiIHkyPSI2NCIvPgogICAgICAgIDxsaW5lIHgxPSItMjAiIHkxPSI2NCIgeDI9IjIwIiB5Mj0iNjQiLz4KICAgICAgPC9nPjwvZz4KPC9zdmc+')" href="https://drive.google.com/file/d/1FygDp_CPk4zh4iqb32QRaauuuTZojQ8N/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">07</span><span class="cat">Interview</span></div>
       <div class="clip-mid">
@@ -420,7 +437,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1lfQ3I8uPcTeamdKb54Tf_S7kqpYM65bH/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTMxNjExIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFhMjMxMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiNkNmZmM2YiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjZDZmZjNmIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cGF0aCBkPSJNIC01NCAtMzAgTCAwIC00NiBMIDU0IC0zMCBMIDAgLTE0IFoiLz4KICAgICAgICA8cGF0aCBkPSJNIC0zMCAtMjAgTCAtMzAgMjAgUSAwIDM0IDMwIDIwIEwgMzAgLTIwIi8+CiAgICAgICAgPGxpbmUgeDE9IjU0IiB5MT0iLTMwIiB4Mj0iNTQiIHkyPSI2Ii8+CiAgICAgIDwvZz48L2c+Cjwvc3ZnPg==')" href="https://drive.google.com/file/d/1lfQ3I8uPcTeamdKb54Tf_S7kqpYM65bH/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">08</span><span class="cat">Educational</span></div>
       <div class="clip-mid">
@@ -430,7 +447,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1qCvmHDtDU-YVY_-MsVwesxGazB6RTNXd/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTMxNjExIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFjMjQxMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiNkNmZmM2YiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjZDZmZjNmIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cGF0aCBkPSJNIDYgLTUwIEwgLTQ2IDEwIEwgLTYgMTAgTCAtMTQgNTAgTCA0NiAtMTQgTCA2IC0xNCBaIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgICAgIDwvZz48L2c+Cjwvc3ZnPg==')" href="https://drive.google.com/file/d/1qCvmHDtDU-YVY_-MsVwesxGazB6RTNXd/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">09</span><span class="cat">Short Edit</span></div>
       <div class="clip-mid">
@@ -440,7 +457,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1AGtFRTilQxMJJ0cigiNJ9ThG0oOtHIAm/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTMxNjExIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFjMjQxMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiNkNmZmM2YiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjZDZmZjNmIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cGF0aCBkPSJNIDYgLTUwIEwgLTQ2IDEwIEwgLTYgMTAgTCAtMTQgNTAgTCA0NiAtMTQgTCA2IC0xNCBaIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgICAgIDwvZz48L2c+Cjwvc3ZnPg==')" href="https://drive.google.com/file/d/1AGtFRTilQxMJJ0cigiNJ9ThG0oOtHIAm/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">10</span><span class="cat">Short Edit</span></div>
       <div class="clip-mid">
@@ -450,7 +467,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1YdW3viMieK50L4VPCkoAZ1OGBICwAcmA/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTMxNjExIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFjMjQxMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiNkNmZmM2YiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjZDZmZjNmIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cGF0aCBkPSJNIDYgLTUwIEwgLTQ2IDEwIEwgLTYgMTAgTCAtMTQgNTAgTCA0NiAtMTQgTCA2IC0xNCBaIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgICAgIDwvZz48L2c+Cjwvc3ZnPg==')" href="https://drive.google.com/file/d/1YdW3viMieK50L4VPCkoAZ1OGBICwAcmA/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">11</span><span class="cat">Short Edit</span></div>
       <div class="clip-mid">
@@ -460,7 +477,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1882Gw_1GymQ5jN8QZ1ld3_0YifJdikAW/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWMxNDE2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJjMTQxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiNmZjNiMzAiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjZmYzYjMwIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cmVjdCB4PSItNTgiIHk9Ii00MCIgd2lkdGg9IjExNiIgaGVpZ2h0PSI4MCIgcng9IjgiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMjYiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMTAiIGZpbGw9IiNmMmVmZTgiIHN0cm9rZT0ibm9uZSIvPgogICAgICAgIDxyZWN0IHg9IjM0IiB5PSItMzQiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMiIgcng9IjIiLz4KICAgICAgPC9nPjwvZz4KPC9zdmc+')" href="https://drive.google.com/file/d/1882Gw_1GymQ5jN8QZ1ld3_0YifJdikAW/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">12</span><span class="cat">Ad</span></div>
       <div class="clip-mid">
@@ -470,7 +487,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1ZjAN9zrPh0H2TZBSrARTLQa-SVH6nA3f/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTMxNjExIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFhMjMxMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiNkNmZmM2YiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjZDZmZjNmIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cGF0aCBkPSJNIC01NCAtMzAgTCAwIC00NiBMIDU0IC0zMCBMIDAgLTE0IFoiLz4KICAgICAgICA8cGF0aCBkPSJNIC0zMCAtMjAgTCAtMzAgMjAgUSAwIDM0IDMwIDIwIEwgMzAgLTIwIi8+CiAgICAgICAgPGxpbmUgeDE9IjU0IiB5MT0iLTMwIiB4Mj0iNTQiIHkyPSI2Ii8+CiAgICAgIDwvZz48L2c+Cjwvc3ZnPg==')" href="https://drive.google.com/file/d/1ZjAN9zrPh0H2TZBSrARTLQa-SVH6nA3f/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">13</span><span class="cat">Educational</span></div>
       <div class="clip-mid">
@@ -480,7 +497,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1CUc0dgOxZNfzOOexb12kWwsvoH2mDIk5/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWMxNDE2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJjMTQxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiNmZjNiMzAiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjZmYzYjMwIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cmVjdCB4PSItNTgiIHk9Ii00MCIgd2lkdGg9IjExNiIgaGVpZ2h0PSI4MCIgcng9IjgiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMjYiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMTAiIGZpbGw9IiNmMmVmZTgiIHN0cm9rZT0ibm9uZSIvPgogICAgICAgIDxyZWN0IHg9IjM0IiB5PSItMzQiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMiIgcng9IjIiLz4KICAgICAgPC9nPjwvZz4KPC9zdmc+')" href="https://drive.google.com/file/d/1CUc0dgOxZNfzOOexb12kWwsvoH2mDIk5/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">14</span><span class="cat">Ad</span></div>
       <div class="clip-mid">
@@ -490,7 +507,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/11-iS178Rq42RqCn6MpKtGt8L06dVy5K-/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTQxNTE4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFjMWYxYyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiM4YzhjOTMiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjOGM4YzkzIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjUiPgogICAgICAgIDxwYXRoIGQ9Ik0gLTU2IDIwIFEgLTMwIC00MCAwIDIwIFQgNTYgMjAiLz4KICAgICAgICA8Y2lyY2xlIGN4PSItNTYiIGN5PSIyMCIgcj0iNSIgZmlsbD0iI2YyZWZlOCIgc3Ryb2tlPSJub25lIi8+CiAgICAgICAgPGNpcmNsZSBjeD0iMCIgY3k9IjIwIiByPSI1IiBmaWxsPSIjZjJlZmU4IiBzdHJva2U9Im5vbmUiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI1NiIgY3k9IjIwIiByPSI1IiBmaWxsPSIjZjJlZmU4IiBzdHJva2U9Im5vbmUiLz4KICAgICAgPC9nPjwvZz4KPC9zdmc+')" href="https://drive.google.com/file/d/11-iS178Rq42RqCn6MpKtGt8L06dVy5K-/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">15</span><span class="cat">Motion</span></div>
       <div class="clip-mid">
@@ -500,7 +517,7 @@
       <span class="clip-sprockets right"></span>
     </a>
 
-    <a class="clip" href="https://drive.google.com/file/d/1lel31Dcl-sNyP0hfqvblcntDqPL4HaQG/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="clip" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWMxNDE2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJjMTQxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJsaW5lcyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoMzUpIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjI2IiBzdHJva2U9IiNmZjNiMzAiIHN0cm9rZS1vcGFjaXR5PSIwLjA2IiBzdHJva2Utd2lkdGg9IjgiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgZmlsbD0idXJsKCNsaW5lcykiLz4KICA8Y2lyY2xlIGN4PSI0OTkuMjAwMDAwMDAwMDAwMDUiIGN5PSIxMDUuNiIgcj0iMTMwIiBmaWxsPSIjZmYzYjMwIiBvcGFjaXR5PSIwLjEwIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIwLjAsMjIyLjApIj48ZyBzdHJva2U9IiNmMmVmZTgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgICA8cmVjdCB4PSItNTgiIHk9Ii00MCIgd2lkdGg9IjExNiIgaGVpZ2h0PSI4MCIgcng9IjgiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMjYiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMTAiIGZpbGw9IiNmMmVmZTgiIHN0cm9rZT0ibm9uZSIvPgogICAgICAgIDxyZWN0IHg9IjM0IiB5PSItMzQiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMiIgcng9IjIiLz4KICAgICAgPC9nPjwvZz4KPC9zdmc+')" href="https://drive.google.com/file/d/1lel31Dcl-sNyP0hfqvblcntDqPL4HaQG/view?usp=drivesdk" target="_blank" rel="noopener">
       <span class="clip-sprockets left"></span>
       <div class="clip-tag"><span class="idx">16</span><span class="cat">Ad</span></div>
       <div class="clip-mid">
